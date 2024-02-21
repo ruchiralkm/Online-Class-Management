@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--Created by Tivotal-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ECLASS</title>
+
+    <!--font awesome(for icons)-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!--css file-->
+    <link rel="stylesheet" href="logincs.css" />
+  </head>
+  <body>
+    <header class="header">
+      <input type="checkbox" id="check" />
+      <label for="check"><i class="fas fa-bars"></i></label>
+
+      <h1 class="logo"><i class="fas fa-coffee"></i>eclass</h1>
+
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Pricing</a>
+        <a href="#">Reviews</a>
+        <a href="#">About</a>
+      </div>
+
+      <a href="register.html" class="btn">Admin</a>
+    </header>
+
+
+    <!--------------------- form --------------------------->
+    <div class="main">  	
+      <input type="checkbox" id="chk" aria-hidden="true">
+  
+        <div class="signup">
+          <form action="registerphp.php" method="post">
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <input type="text" name="name" placeholder="Name" required="">
+
+            <select name="stream" id="ct">
+            <optgroup label="Select Stream">
+              <option value="O/L">O/L</option>
+              <option value="A/L">A/L</option>
+              <option value="Higher Education">Higher Education</option>
+              <option value="Other">Other</option>
+            </optgroup>
+            </select>
+              
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="password" placeholder="Password" required="">
+            <button type="submit">Sign up</button>
+          </form>
+        </div>
+  
+        <div class="login">
+          <form action="login.php" method="post">
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="password" placeholder="Password" required="">
+            <button type="submit">Login</button>
+          </form>
+        </div>
+    </div>
+
+  </body>
+</html>
