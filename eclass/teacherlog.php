@@ -29,14 +29,14 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 //users = enter your table name of the database
-$sql = "SELECT * FROM student WHERE email = '$email' AND password = '$password'";
+$sql = "SELECT * FROM teacher WHERE email = '$email' AND password = '$password'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Fetch user data
     $row = $result->fetch_assoc();
     $name = $row['name'];
-    header("Location: studentm.php?name=$name");
+    header("Location: teacherm.php?name=$name");
 ?>
 
 <br><br><br>
@@ -47,8 +47,8 @@ if ($result->num_rows > 0) {
     <div class="box">
         <img src="tick.png">
         <h2>Welcome<?php echo " $name!";?></h2>
-        <p>You are successfully Login</p><br>
-        <a href="studentm.php" class="btn">Home</a>
+        <p>Sir/Madam, You are successfully Login</p><br>
+        <a href="#" class="btn">Home</a>
     </div>
 </div>
 </div>
@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
         <img src="close.png">
         <h2><?php echo "Invalid Email or Password";?></h2>
         <p>Login Failed, Try Again!</p><br>
-        <a href="register.html" class="btn">Login</a>
+        <a href="teacherreg.html" class="btn">Login</a>
     </div>
 </div>
 </div>

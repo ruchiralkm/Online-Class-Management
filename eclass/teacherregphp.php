@@ -29,7 +29,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 //users = enter your table name of the database
-$sql = "INSERT INTO student (name,stream,email,password) VALUES ('$name','$stream', '$email', '$password')";
+$sql = "INSERT INTO teacher (name,stream,email,password) VALUES ('$name','$stream', '$email', '$password')";
 
 if ($conn->query($sql) === TRUE) {
     // echo "Registration successful!";
@@ -42,8 +42,8 @@ if ($conn->query($sql) === TRUE) {
         <div class="box">
             <img src="tick.png">
             <h2>Hii<?php echo " $name!";?></h2>
-            <p>Dear Student, You are successfully registered</p>
-            <a href="register.html" class="btn">Login</a>
+            <p>Sir/Madam, You are successfully registered</p>
+            <a href="teacherreg.html" class="btn">Login</a>
         </div>
     </div>
 </div>

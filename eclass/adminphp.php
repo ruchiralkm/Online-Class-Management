@@ -36,7 +36,6 @@ if ($result->num_rows > 0) {
     // Fetch user data
     $row = $result->fetch_assoc();
     $name = $row['name'];
-    header("Location: studentm.php?name=$name");
 ?>
 
 <br><br><br>
@@ -48,7 +47,7 @@ if ($result->num_rows > 0) {
         <img src="tick.png">
         <h2>Welcome<?php echo " $name!";?></h2>
         <p>You are successfully Login</p><br>
-        <a href="studentm.php" class="btn">Home</a>
+        <a href="#" class="btn">Home</a>
     </div>
 </div>
 </div>
