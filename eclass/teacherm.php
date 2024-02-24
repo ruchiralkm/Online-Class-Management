@@ -15,8 +15,59 @@
     <!--css file-->
     <link rel="stylesheet" href="studentmcsk.css" />
 
-    <link rel="stylesheet" href="addtask.css" />
+    <link rel="stylesheet" href="addtasks.css" />
 
+    <!-- table -->
+    <style>
+      table {
+        /* position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); */
+        margin-left:30px;
+        border-collapse: collapse;
+        width: 800px;
+        height: 200px;
+        border: 1px solid #bdc3c7;
+        border-radius:20px;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    tr {
+        transition: all .2s ease-in;
+        
+    }
+    
+    th,
+    td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-weight:bold;
+    }
+
+    #header {
+        background-color: #16a085;
+        color: #fff;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+        transform: scale(1.02);
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .opt{
+	    background-color:red;
+	    color:#fff;
+	    font-size:1em;
+	    padding:5px;
+	    text-decoration:none;
+      border-radius:10px;
+  }
+
+
+    </style>
 
 
 
@@ -35,7 +86,7 @@
         var selectedOption = firstDropdown.options[firstDropdown.selectedIndex].value;
 
         // Populate the second dropdown based on the selection
-        if (selectedOption === "maths") {
+        if (selectedOption === "Maths") {
             var option1 = document.createElement("option");
             option1.text = "Combined Maths";
             option1.value = "Combined Maths";
@@ -56,7 +107,7 @@
             option4.value = "ICT";
             secondDropdown.add(option4);
 
-        } else if (selectedOption === "biology") {
+        } else if (selectedOption === "Biology") {
             var option1 = document.createElement("option");
             option1.text = "Biology";
             option1.value = "Biology";
@@ -76,7 +127,7 @@
             option4.text = "Agriculture";
             option4.value = "Agriculture";
             secondDropdown.add(option4);
-        }else if (selectedOption === "technology") {
+        }else if (selectedOption === "Technology") {
             var option1 = document.createElement("option");
             option1.text = "ET";
             option1.value = "ER";
@@ -96,7 +147,7 @@
             option4.text = "ICT";
             option4.value = "ICT";
             secondDropdown.add(option4);
-        }else if (selectedOption === "commerce") {
+        }else if (selectedOption === "Commerce") {
             var option1 = document.createElement("option");
             option1.text = "Accountancy";
             option1.value = "Accountancy";
@@ -116,7 +167,7 @@
             option4.text = "ICT";
             option4.value = "ICT";
             secondDropdown.add(option4);
-        }else if (selectedOption === "arts") {
+        }else if (selectedOption === "Arts") {
             var option1 = document.createElement("option");
             option1.text = "Social Sciences";
             option1.value = "Social Sciences";
@@ -136,7 +187,7 @@
             option4.text = "ICT";
             option4.value = "ICT";
             secondDropdown.add(option4);
-        }else if (selectedOption === "language") {
+        }else if (selectedOption === "Language") {
             var option1 = document.createElement("option");
             option1.text = "English";
             option1.value = "English";
@@ -333,102 +384,239 @@
         <?php
                 // Retrieve name from URL query string
                 $name = $_GET['name'];
-                echo "<p style = 'color:black;'> <b>Hi $name, Welcome to Our LMS </b></p>";
+                echo "<h3 style = 'color:black;'> <b>Hi $name, Welcome to Our LMS </b></h3>";
                 ?>
         </span>
         
       </div>
 
+  
+
+      <!-------------- classes table --------------->
+      <br>
+
+      <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname="eclass";
+
+$conn = mysqli_connect($servername,$username,$password,$dbname);
+
+if(!$conn){
+	die("Connection Erro".mysqli_connect_error());
+}else{
+	
+}
+?>
+
+<h1 style = "margin-left:20px;">Classes Time Table</h1>
+
+<?php
+
+$sql="SELECT * FROM task";
+$result=mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+
+?>
+
+<!-------------------------------------------------------Create Table------------------------------>
+<table border=2>
+<tr id="header">
+  <th>Teacher</th>
+  <th>Stream</th>
+  <th>Subject</th>
+  <th>Date</th>
+  <th>Time</th>
+  <th colspan="2">Oparation</th>
+<!-- <th>Delete Records</th> -->
+</tr>
+<!------------------------------------------------------Assign------------------------------------>
+<?php
+
+$i=0;
+while($row=mysqli_fetch_array($result)){
+
+?>
+
+<tr>
+<td> <?php echo $row["name"];  ?> </td>
+<td> <?php echo $row["stream"];  ?> </td>
+<td> <?php echo $row["subject"];  ?> </td>
+<td> <?php echo $row["date"];  ?> </td>
+<td> <?php echo $row["time"];  ?> </td>
+
+<td><a href="#" class="opt">Update</a></td>
+<!-- <td><a href="#" class="opt">Delete</a></td> -->
 
 
-      <!-- table -->
-      <br> <h3 style = "margin-left:20px;">Classes Time Table</h3>
+</tr>
 
-      <table style = "margin-left:20px;">
-        <tr id="header">
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Age</th>
-            <th>Country</th>
-            <th>Gender</th>
-        </tr>
-        <tr>
-            <td>John </td>
-            <td>Doe </td>
-            <td>25 </td>
-            <td>USA </td>
-            <td>Male </td>
+<?php
+$i++;
+}
+?>
 
-        </tr>
-        <tr>
-            <td>steve </td>
-            <td>Doe </td>
-            <td>28 </td>
-            <td>USA </td>
-            <td>Male </td>
 
-        </tr>
-        <tr>
-            <td>simo </td>
-            <td>Doe </td>
-            <td>26 </td>
-            <td>USA </td>
-            <td>Male </td>
+</table>
 
-        </tr>
-        <tr>
-            <td>karim </td>
-            <td>Doe </td>
-            <td>21 </td>
-            <td>USA </td>
-            <td>Male </td>
+<?php
+}
 
-        </tr>
-        <tr>
-            <td>adam </td>
-            <td>Doe </td>
-            <td>20 </td>
-            <td>USA </td>
-            <td>Male </td>
+else{
+	echo "No Records Found";
+}
 
-        </tr>
-        <tr>
-            <td>keven </td>
-            <td>Doe </td>
-            <td>20 </td>
-            <td>USA </td>
-            <td>Male </td>
+?>
 
-        </tr>
 
-        
 
-        
-    </table>
+
+
+
+
+
+
+
+<!----------------------------- Student table ------------------------->
+<br><br> <h1 style = "margin-left:20px;">Students Table</h1>
+<h3 style = "margin-left:20px;">Students who regitered into the LMS</h3><br>
+
+<?php
+
+$sql="SELECT * FROM student";
+$result=mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+
+?>
+
+<!-------------------------------------------------------Create Table------------------------------>
+<table border=2>
+<tr id="header">
+  <th>Student</th>
+  <th>Stream</th>
+  <th>Email</th>
+</tr>
+<!------------------------------------------------------Assign------------------------------------>
+<?php
+
+$i=0;
+while($row=mysqli_fetch_array($result)){
+
+?>
+
+<tr>
+<td> <?php echo $row["name"];  ?> </td>
+<td> <?php echo $row["stream"];  ?> </td>
+<td> <?php echo $row["email"];  ?> </td>
+
+</tr>
+
+<?php
+$i++;
+}
+?>
+
+
+</table>
+
+<?php
+}
+
+else{
+	echo "No Records Found";
+}
+
+?>
+
+
+
+
+
+
+
+
+<!------------------------------ Teacher table ------------------------>
+
+
+<br><br> <h1 style = "margin-left:20px;">Teachers Table</h1>
+<h3 style = "margin-left:20px;">Teachers who regitered into the LMS</h3><br>
+
+<?php
+
+$sql="SELECT * FROM teacher";
+$result=mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+
+?>
+
+<!-------------------------------------------------------Create Table------------------------------>
+<table border=2>
+<tr id="header">
+  <th>Teacher</th>
+  <th>Stream</th>
+  <th>Email</th>
+</tr>
+<!------------------------------------------------------Assign------------------------------------>
+<?php
+
+$i=0;
+while($row=mysqli_fetch_array($result)){
+
+?>
+
+<tr>
+<td> <?php echo $row["name"];  ?> </td>
+<td> <?php echo $row["stream"];  ?> </td>
+<td> <?php echo $row["email"];  ?> </td>
+
+</tr>
+
+<?php
+$i++;
+}
+?>
+
+
+</table>
+
+<?php
+}
+
+else{
+	echo "No Records Found";
+}
+
+?>
+
 
 
 
     <!-- task add form -->
-    <br><br> <h3 style = "margin-left:20px;">Add New Classes</h3><br>
+    <br><br> <h1 style = "margin-left:20px;">Add New Classes</h1>
+    <h3 style = "margin-left:20px;">Teachers can add new classes and enter the teacher name, stream, subject date and time</h3><br>
 
 <div class="form">
-  <p><b>Add New Class</b></p>
-    <form action="waitbe.php" method="post">
+  <p><b>Add New Class</b></p><br>
+    <form action="task.php" method="post">
       <input type="text" name="name" id="name" placeholder="Teacher Name" required>
   
-      <select id="firstDropdown" name="firstDropdown" onchange="updateSecondDropdown()" required>
+      <select id="firstDropdown" name="stream" onchange="updateSecondDropdown()" required>
       <optgroup label="Select Stream">
-        <option value="maths">Maths</option>
-        <option value="biology">Biology</option>
-        <option value="technology">Technology</option>
-        <option value="commerce">Commerce</option>
-        <option value="arts">Arts</option>
-        <option value="language">Language</option>
+        <option value="Maths">Maths</option>
+        <option value="Biology">Biology</option>
+        <option value="Technology">Technology</option>
+        <option value="Commerce">Commerce</option>
+        <option value="Arts">Arts</option>
+        <option value="Language">Language</option>
       </optgroup>
       </select>
 
-      <select id="secondDropdown" name="secondDropdown" required>
-      
+      <select id="secondDropdown" name="subject" required>
+        
         <!-- Options will be populated dynamically based on the selection in the first dropdown -->
         
       </select>

@@ -13,11 +13,72 @@
     />
 
     <!--css file-->
-    <link rel="stylesheet" href="studentmcss.css" />
+    <link rel="stylesheet" href="studentmcsk.css" />
+
+    <link rel="stylesheet" href="addtasks.css" />
+
+
+
+    <!-- table -->
+    <style>
+      table {
+        /* position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); */
+        margin-left:30px;
+        border-collapse: collapse;
+        width: 800px;
+        height: 200px;
+        border: 1px solid #bdc3c7;
+        border-radius:20px;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    tr {
+        transition: all .2s ease-in;
+        
+    }
+    
+    th,
+    td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-weight:bold;
+    }
+
+    #header {
+        background-color: #16a085;
+        color: #fff;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+        transform: scale(1.02);
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .opt{
+	    background-color:#0096FF;
+	    color:#fff;
+	    font-size:1em;
+	    padding:5px;
+	    text-decoration:none;
+      border-radius:10px;
+  }
+
+
+    </style>
+
+
+
+
+
   </head>
   <body>
 
-    <!-- php code  -->
+    
 
 
 
@@ -161,7 +222,7 @@
                 <?php
                 // Retrieve name from URL query string
                 $name = $_GET['name'];
-                echo "<p> $name</p>";
+                echo "<p style = 'color:white;'> $name</p>";
                 ?>
     
               </div>
@@ -180,12 +241,211 @@
         <?php
                 // Retrieve name from URL query string
                 $name = $_GET['name'];
-                echo "<p> Hi $name, Welcome to Our LMS</p>";
+                echo "<h3> Hi $name, Welcome to Our LMS</h3>";
                 ?>
         </span>
         
       </div>
-      <br> <h3 style = "margin-left:20px;">Classes Time Table</h3>
+
+
+            <!-------------- classes table --------------->
+            <br>
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname="eclass";
+
+$conn = mysqli_connect($servername,$username,$password,$dbname);
+
+if(!$conn){
+die("Connection Erro".mysqli_connect_error());
+}else{
+
+}
+?>
+
+<h1 style = "margin-left:20px;">Classes Time Table</h1>
+
+<?php
+
+$sql="SELECT * FROM task";
+$result=mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+
+?>
+
+<!-------------------------------------------------------Create Table------------------------------>
+<table border=2>
+<tr id="header">
+<th>Teacher</th>
+<th>Stream</th>
+<th>Subject</th>
+<th>Date</th>
+<th>Time</th>
+<th colspan="1">Oparation</th>
+</tr>
+<!------------------------------------------------------Assign------------------------------------>
+<?php
+
+$i=0;
+while($row=mysqli_fetch_array($result)){
+
+?>
+
+<tr>
+<td> <?php echo $row["name"];  ?> </td>
+<td> <?php echo $row["stream"];  ?> </td>
+<td> <?php echo $row["subject"];  ?> </td>
+<td> <?php echo $row["date"];  ?> </td>
+<td> <?php echo $row["time"];  ?> </td>
+
+<td><a href="https://www.youtube.com/" class="opt">View</a></td>
+
+
+</tr>
+
+<?php
+$i++;
+}
+?>
+
+
+</table>
+
+<?php
+}
+
+else{
+echo "No Records Found";
+}
+
+?>
+
+
+
+
+
+<!----------------------------- Student table ------------------------->
+<br><br> <h1 style = "margin-left:20px;">Students Table</h1>
+<h3 style = "margin-left:20px;">Students who regitered into the LMS</h3><br>
+
+<?php
+
+$sql="SELECT * FROM student";
+$result=mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+
+?>
+
+<!-------------------------------------------------------Create Table------------------------------>
+<table border=2>
+<tr id="header">
+  <th>Student</th>
+  <th>Stream</th>
+  <th>Email</th>
+</tr>
+<!------------------------------------------------------Assign------------------------------------>
+<?php
+
+$i=0;
+while($row=mysqli_fetch_array($result)){
+
+?>
+
+<tr>
+<td> <?php echo $row["name"];  ?> </td>
+<td> <?php echo $row["stream"];  ?> </td>
+<td> <?php echo $row["email"];  ?> </td>
+
+</tr>
+
+<?php
+$i++;
+}
+?>
+
+
+</table>
+
+<?php
+}
+
+else{
+	echo "No Records Found";
+}
+
+?>
+
+
+
+
+
+
+
+
+<!------------------------------ Teacher table ------------------------>
+
+
+<br><br> <h1 style = "margin-left:20px;">Teachers Table</h1>
+<h3 style = "margin-left:20px;">Teachers who regitered into the LMS</h3><br>
+
+<?php
+
+$sql="SELECT * FROM teacher";
+$result=mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+
+?>
+
+<!-------------------------------------------------------Create Table------------------------------>
+<table border=2>
+<tr id="header">
+  <th>Teacher</th>
+  <th>Stream</th>
+  <th>Email</th>
+</tr>
+<!------------------------------------------------------Assign------------------------------------>
+<?php
+
+$i=0;
+while($row=mysqli_fetch_array($result)){
+
+?>
+
+<tr>
+<td> <?php echo $row["name"];  ?> </td>
+<td> <?php echo $row["stream"];  ?> </td>
+<td> <?php echo $row["email"];  ?> </td>
+
+</tr>
+
+<?php
+$i++;
+}
+?>
+
+
+</table>
+
+<?php
+}
+
+else{
+	echo "No Records Found";
+}
+
+?>
+<br>ww
+
+
+
+
+
     </div>
 
     <script src="app.js"></script>
