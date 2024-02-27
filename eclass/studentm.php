@@ -13,7 +13,7 @@
     />
 
     <!--css file-->
-    <link rel="stylesheet" href="studentmcsk.css" />
+    <link rel="stylesheet" href="studentmcskk.css" />
 
     <link rel="stylesheet" href="addtasks.css" />
 
@@ -108,33 +108,31 @@
           <div class="icon-link">
             <a href="#">
               <i class="fab fa-codepen"></i>
-              <span class="link-name">Courses</span>
+              <span class="link-name">Classes</span>
             </a>
             <i class="fas fa-caret-down arrow"></i>
           </div>
 
           <ul class="sub-menu">
-            <li><a href="#" class="link-name">Courses</a></li>
-            <li><a href="#">Block Chain</a></li>
-            <li><a href="#">Cryptography</a></li>
-            <li><a href="#">Animation</a></li>
+            <li><a href="#" class="link-name">Classes</a></li>
+            <li><a href="#">New Classes</a></li>
+            <li><a href="#">Old Classes</a></li>
           </ul>
         </li>
 
         <li>
           <div class="icon-link">
             <a href="#">
-              <i class="fab fa-blogger"></i>
-              <span class="link-name">Blog</span>
+              <i class="fa fa-user"></i>
+              <span class="link-name">Candidates</span>
             </a>
             <i class="fas fa-caret-down arrow"></i>
           </div>
 
           <ul class="sub-menu">
-            <li><a href="#" class="link-name">Blog</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Card Design</a></li>
-            <li><a href="#">Form Design</a></li>
+            <li><a href="#" class="link-name">Candidates</a></li>
+            <li><a href="#">Students</a></li>
+            <li><a href="#">Teachers</a></li>
           </ul>
         </li>
 
@@ -151,51 +149,12 @@
 
         <li>
           <a href="#">
-            <i class="fas fa-heart"></i>
-            <span class="link-name">Favourite</span>
-          </a>
-
-          <ul class="sub-menu blank">
-            <li><a href="#" class="link-name">Favourite</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <div class="icon-link">
-            <a href="#">
-              <i class="fas fa-laptop-code"></i>
-              <span class="link-name">Compiler</span>
-            </a>
-            <i class="fas fa-caret-down arrow"></i>
-          </div>
-
-          <ul class="sub-menu">
-            <li><a href="#" class="link-name">Compiler</a></li>
-            <li><a href="#">Python Compiler</a></li>
-            <li><a href="#">Java Compiler</a></li>
-            <li><a href="#">C Compiler</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="#">
             <i class="fas fa-bookmark"></i>
             <span class="link-name">Saved</span>
           </a>
 
           <ul class="sub-menu blank">
             <li><a href="#" class="link-name">Saved</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="#">
-            <i class="fas fa-cart-shopping"></i>
-            <span class="link-name">Cart</span>
-          </a>
-
-          <ul class="sub-menu blank">
-            <li><a href="#" class="link-name">Cart</a></li>
           </ul>
         </li>
 
@@ -285,7 +244,7 @@ if(mysqli_num_rows($result)>0){
 <th>Subject</th>
 <th>Date</th>
 <th>Time</th>
-<th colspan="1">Oparation</th>
+<th colspan="1">Operate</th>
 </tr>
 <!------------------------------------------------------Assign------------------------------------>
 <?php
@@ -319,7 +278,10 @@ $i++;
 }
 
 else{
-echo "No Records Found";
+  ?>
+  <h3 style = "margin-left:50px;"><?php echo "No Classes at this movement"; ?></h3>
+
+  <?php
 }
 
 ?>
@@ -375,7 +337,10 @@ $i++;
 }
 
 else{
-	echo "No Records Found";
+  ?>
+  <h3 style = "margin-left:50px;"><?php echo "No Students have registered"; ?></h3>
+
+  <?php
 }
 
 ?>
@@ -436,11 +401,16 @@ $i++;
 }
 
 else{
-	echo "No Records Found";
+  ?>
+  <h3 style = "margin-left:50px;"><?php echo "No Teachers have registered"; ?></h3>
+
+  <?php
 }
 
 ?>
-<br>ww
+<br><p class="copyright"><center><br>
+         ©2024 Designed by Ruchira Kaluarachchi | All Rights Reserved.</center><br><br><br>
+      </p>
 
 
 
@@ -449,5 +419,17 @@ else{
     </div>
 
     <script src="app.js"></script>
+
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+          if(disclaimer) {
+              disclaimer.remove();
+          }
+      });
+  </script>
   </body>
 </html>
